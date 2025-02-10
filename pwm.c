@@ -6,8 +6,7 @@
 #define servopin 22 // pino do servomotor
 
 
-const uint16_t LED_STEP = 200; //passo de incremento/decremento para o duty cycle do LED
-uint16_t led_level = 200; //nível inicial do pwm (duty cycle)
+
 
 //função para configurar o módulo PWM
 void pwm_setup(uint pin)
@@ -61,21 +60,21 @@ int main()
     
 
     anguloservo(servopin, 2400);
-    printf("Ângulo ajustado para 180 graus");
+    printf("Ângulo ajustado para 180 graus\n");
 
     sleep_ms(5000);
 
     anguloservo(servopin,1470);
-    printf("Ângulo ajustado para 90 graus");
+    printf("Ângulo ajustado para 90 graus\n");
 
     sleep_ms(5000);
 
     anguloservo(servopin,500);
-    printf("Ângulo ajustado para 0 graus");
+    printf("Ângulo ajustado para 0 graus\n");
 
     sleep_ms(5000);
 
-    printf(" Iniciando movimentação semicircular");
+    printf("Iniciando movimentação semicircular\n");
 
     //loop principal
     while (true) {
