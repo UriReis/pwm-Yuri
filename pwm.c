@@ -25,7 +25,7 @@ void pwm_setup(uint pin)
 
 void anguloservo(uint pin, float pulso){
 
-    uint level = (pulso / 20000.0) * 31250;
+    uint level = (pulso / 20000) * 31250;
     pwm_set_gpio_level(pin, level); //define o nível atual do PWM (duty cycle)
 
 }
@@ -33,6 +33,17 @@ void anguloservo(uint pin, float pulso){
 void circular( uint pin, float comeco, float final){
     float ciclo = 5.0;
     float delay = 10.0;
+    uint level;
+
+    for(float i = 500; i <= final; i= i+ciclo){
+
+        level = (i/20000)*31250;
+        pwm_set_gpio_level(pin, level);
+        sleep_ms(delay);
+    }
+    /*for(float i = 2400; i>= comeco; i= i-ciclo){
+
+    }*/
 }
 
 
@@ -56,7 +67,7 @@ int main()
 
     sleep_ms(5000);
 
-    anguloservo(servopin,1470);
+    anguloservo(servopin,500);
     printf("Ângulo ajustado para 0 graus");
 
     sleep_ms(5000);
@@ -67,18 +78,7 @@ int main()
     while (true) {
 
         
-        /*if (up_down) 
-        {
-            led_level += LED_STEP; // Incrementa o nível do LED
-            if (led_level >= WRAP_PERIOD)
-                up_down = 0; // Muda direção para diminuir quando atingir o período máximo
-        }
-        else
-        {
-            led_level -= LED_STEP; // Decrementa o nível do LED
-            if (led_level <= LED_STEP)
-                up_down = 1; // Muda direção para aumentar quando atingir o mínimo
-        }*/
+       circular(servopin,500,2400);
 
     }
 }
