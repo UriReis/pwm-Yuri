@@ -2,7 +2,7 @@
 #include "pico/stdlib.h" //subconjunto central de bibliotecas do SDK Pico
 #include "hardware/pwm.h" //biblioteca para controlar o hardware de PWM
 
-#define pinled 12 //pino do LED conectado a GPIO como PWM
+#define pinled 13 //pino do LED conectado a GPIO como PWM
 #define servopin 22 // pino do servomotor
 
 
@@ -55,7 +55,7 @@ int main()
     stdio_init_all(); //inicializa o sistema padrão de I/O
     
     pwm_setup(servopin); //configura o PWM
-   //pwm_setup(pinled);
+    pwm_setup(pinled);
 
     
 
