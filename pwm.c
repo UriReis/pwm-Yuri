@@ -41,9 +41,12 @@ void circular( uint pin, float comeco, float final){
         pwm_set_gpio_level(pin, level);
         sleep_ms(delay);
     }
-    /*for(float i = 2400; i>= comeco; i= i-ciclo){
+    for(float i = 2400; i>= comeco; i= i-ciclo){
 
-    }*/
+        level= (i/20000)*31250;
+        pwm_set_gpio_level(pin, level);
+        sleep_ms(delay);
+    }
 }
 
 
