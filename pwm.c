@@ -57,8 +57,8 @@ int main()
     pwm_setup(pinled);
 
     anguloservo(servopin, 2400);
-    //anguloservo(pinled, 2400);
-    anguloservo(pinled, 2400*2); // Para a placca
+    anguloservo(pinled, 2400);
+ 
     printf("Ângulo ajustado para 180 graus\n");
 
     sleep_ms(5000);
@@ -70,8 +70,8 @@ int main()
     sleep_ms(5000);
 
     anguloservo(servopin, 500);
-    //anguloservo(pinled, 500);
-    anguloservo(pinled, 500/2);// Para a placa
+    anguloservo(pinled, 500);
+   
     printf("Ângulo ajustado para 0 graus\n");
 
     sleep_ms(5000);
@@ -82,8 +82,8 @@ int main()
     while (true)
     {
 
-        //circular(pinled, 500,2400);
-        circular(pinled, 500/2, 2400*2);//para a placa
         circular(servopin, 500, 2400);
+        circular(pinled, 500, 2400);//para a placa
+        
     }
 }
