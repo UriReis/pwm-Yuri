@@ -1,9 +1,9 @@
-#include <stdio.h>        // Biblioteca padrão da linguagem C para entrada e saída
-#include "pico/stdlib.h"  // Biblioteca do SDK do Raspberry Pi Pico para funcionalidades básicas
-#include "hardware/pwm.h" // Biblioteca para controle do hardware de PWM
+#include <stdio.h>        
+#include "pico/stdlib.h"  
+#include "hardware/pwm.h" 
 
-#define pinled 12   // Define o pino GPIO 12 para o LED (controlado via PWM)
-#define servopin 22 // Define o pino GPIO 22 para o servomotor
+#define pinled 12   
+#define servopin 22 
 
 // Função para configurar o módulo PWM no pino especificado
 void pwm_setup(uint pin)
@@ -37,17 +37,17 @@ void circular(uint pin, float comeco, float final)
     // Movimento do servo de "comeco" até "final"
     for (float i = comeco; i <= final; i += ciclo)
     {
-        level = (i / 20000) * 31250; // Converte o valor para o PWM
-        pwm_set_gpio_level(pin, level); // Aplica o duty cycle
-        sleep_ms(delay); // Aguarda um pequeno intervalo para suavizar o movimento
+        level = (i / 20000) * 31250; 
+        pwm_set_gpio_level(pin, level); 
+        sleep_ms(delay); 
     }
 
     // Retorno do servo de "final" até "comeco"
     for (float i = final; i >= comeco; i -= ciclo)
     {
-        level = (i / 20000) * 31250; // Converte o valor para o PWM
-        pwm_set_gpio_level(pin, level); // Aplica o duty cycle
-        sleep_ms(delay); // Aguarda um pequeno intervalo para suavizar o movimento
+        level = (i / 20000) * 31250; 
+        pwm_set_gpio_level(pin, level);
+        sleep_ms(delay); 
     }
 }
 
@@ -64,21 +64,21 @@ int main()
     anguloservo(pinled, 2400);
     printf("Ângulo ajustado para 180 graus\n");
 
-    sleep_ms(5000); // Aguarda 5 segundos
+    sleep_ms(5000); 
 
     // Define o ângulo do servo e do LED para 90 graus (pulso de 1470 µs)
     anguloservo(servopin, 1470);
     anguloservo(pinled, 1470);
     printf("Ângulo ajustado para 90 graus\n");
 
-    sleep_ms(5000); // Aguarda 5 segundos
+    sleep_ms(5000); 
 
     // Define o ângulo do servo e do LED para 0 graus (pulso de 500 µs)
     anguloservo(servopin, 500);
     anguloservo(pinled, 500);
     printf("Ângulo ajustado para 0 graus\n");
 
-    sleep_ms(5000); // Aguarda 5 segundos
+    sleep_ms(5000); 
 
     printf("Iniciando movimentação semicircular\n");
 
