@@ -2,7 +2,7 @@
 #include "pico/stdlib.h"  //subconjunto central de bibliotecas do SDK Pico
 #include "hardware/pwm.h" //biblioteca para controlar o hardware de PWM
 
-#define pinled 13   // pino do LED conectado a GPIO como PWM
+#define pinled 12   // pino do LED conectado a GPIO como PWM
 #define servopin 22 // pino do servomotor
 
 // função para configurar o módulo PWM
@@ -32,14 +32,14 @@ void circular(uint pin, float comeco, float final)
     float delay = 10.0;
     uint level;
 
-    for (float i = 500; i <= final; i = i + ciclo)
+    for (float i = comeco; i <= final; i = i + ciclo)
     {
 
         level = (i / 20000) * 31250;
         pwm_set_gpio_level(pin, level);
         sleep_ms(delay);
     }
-    for (float i = 2400; i >= comeco; i = i - ciclo)
+    for (float i = final; i >= comeco; i = i - ciclo)
     {
 
         level = (i / 20000) * 31250;
@@ -57,7 +57,8 @@ int main()
     pwm_setup(pinled);
 
     anguloservo(servopin, 2400);
-    anguloservo(pinled, 2400);
+    //anguloservo(pinled, 2400);
+    anguloservo(pinled, 2400*2); // Para a placca
     printf("Ângulo ajustado para 180 graus\n");
 
     sleep_ms(5000);
@@ -69,7 +70,8 @@ int main()
     sleep_ms(5000);
 
     anguloservo(servopin, 500);
-    anguloservo(pinled, 500);
+    //anguloservo(pinled, 500);
+    anguloservo(pinled, 500/2);// Para a placa
     printf("Ângulo ajustado para 0 graus\n");
 
     sleep_ms(5000);
@@ -80,7 +82,8 @@ int main()
     while (true)
     {
 
-        anguloservo(pinled, 2400);
+        //circular(pinled, 500,2400);
+        circular(pinled, 500/2, 2400*2);//para a placa
         circular(servopin, 500, 2400);
     }
 }
