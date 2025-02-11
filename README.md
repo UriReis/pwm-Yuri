@@ -61,7 +61,9 @@ Esses valores são usados no código para ajustar o posicionamento do servomotor
 
 
 ## Observações sobre o LED RGB
-Durante o experimento com o LED RGB (GPIO 12), é necessário ao aplicado na placa comentar a linha 57 do código. 
+Durante o experimento com o LED RGB (GPIO 12), a mudança fica quase impossível de ser percebida pelo wokwi, porém na placa é  possível perceber de uma forma melhor, vale ressaltar também que caso fosse mudado o duty cicle a luminosidade seria alterada de uma maneira mais consideravel e percepitível. 
 
 
 ## Link para o vídeo da tarefa:
+
+https://youtu.be/ZjHp6eZ35vE?si=MEj3ha89LV0IgVD8
